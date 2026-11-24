@@ -1,23 +1,56 @@
-# Dns Yar – data files
+<p align="center"><img src="assets/logo.png" alt="Dns Yar" width="600"></p>
 
-این مخزن فقط دو فایل عمومی دارد که برنامه‌ی Dns Yar هنگام باز شدن آن‌ها را می‌خواند. هیچ کد یا رمزی در آن نگذارید.
+<p align="center">
+یک برنامه‌ی اندرویدی رایگان برای تغییر DNS، تست سرعت DNS و بررسی IP — بدون حساب کاربری، بدون تبلیغ، بدون ردیابی.
+<br>
+<em>A free Android app to change DNS, test DNS speed, and check your IP — no account, no ads, no tracking.</em>
+</p>
 
-## dns-list.json  (لیست DNS)
-- `servers`: سرورهای جدید. نمونه:
-  { "name": "نام", "ips": ["1.2.3.4", "1.2.3.5"], "cc": "us", "cat": "public", "tags": ["gaming"], "alias": "کلمه‌های جستجو" }
-  - `cat`: public | security | isp | unblock
-  - `tags`: ["gaming"] برچسب آبی Gaming DNS را می‌دهد
-- `remove`: لیست IP اول (اصلی) سرورهایی که باید از برنامه حذف شوند، مثلاً ["8.8.8.8"].
-- هر بار که فایل را عوض می‌کنید `version` و `updated` را هم عوض کنید.
+---
 
-## update.json  (آپدیت برنامه)
-- `version`: آخرین نسخه‌ی برنامه. اگر از نسخه‌ی کاربر بالاتر باشد، یک نوار آبی «نسخه‌ی جدید» نشان داده می‌شود.
-- `minVersion`: پایین‌ترین نسخه‌ی مجاز. نسخه‌های پایین‌تر صفحه‌ی «به‌روزرسانی لازم است» می‌بینند. فقط وقتی لازم است بالا ببرید.
-- `url`: لینک دانلود/صفحه‌ی آپدیت (خالی = صفحه‌ی فروشگاه).
+## امکانات
 
-## لینک‌ها (در dns.js، بخش CONFIG)
-```js
-updateJsonUrls: ['https://raw.githubusercontent.com/USERNAME/REPO/main/update.json'],
-remoteListUrls: ['https://raw.githubusercontent.com/USERNAME/REPO/main/dns-list.json'],
-```
-USERNAME و REPO را عوض کنید. اگر GitHub Pages را روشن کنید، لینک پشتیبان: `https://USERNAME.github.io/REPO/dns-list.json`
+- **تغییر DNS** با یک لمس، از طریق یک VPN محلی سبک (فقط ترافیک DNS را می‌گیرد؛ بقیه‌ی اینترنت دست‌نخورده می‌ماند)
+- **لیست آماده‌ی DNS** با پرچم کشور — عمومی، امنیتی، اپراتورها و DNSهای ضدفیلتر
+- **تست سرعت همه‌ی سرورها** (حدود ۳۰ ثانیه، میانگین‌گیری چند مرحله‌ای) و معرفی سریع‌ترین DNS
+- **تست اختصاصی هر DNS** روی بازی‌ها، شبکه‌های اجتماعی، مرورگرها، سایت‌های هوش مصنوعی، مارکت‌ها و سایت دلخواه خودتان
+- **افزودن DNS دلخواه** یا ورود فایل `.ini`
+- **بررسی IP، ISP، موقعیت و رکوردهای DNS** هر دامنه (تب IP)
+- **۱۲ زبان:** فارسی، انگلیسی، عربی، فرانسوی، روسی، آلمانی، چینی، هندی، اسپانیایی، پرتغالی، ترکی، ایتالیایی
+
+## ساختار پروژه
+
+| مسیر | توضیح |
+|---|---|
+| `app/src/main/assets/www/` | رابط کاربری. `popup.css` و `popup.js` همان فایل‌های افزونه‌ی IP Yar هستند (بدون تغییر)؛ فایل‌های جدید: `index.html`، `dns.css`، `dns.js`، `dns-data.js` (لیست DNS)، `i18n-dns.js` (ترجمه‌ها)، `shim.js` |
+| `app/src/main/assets/www/flags/` | پرچم کشورها |
+| `DnsVpnService.kt` | تغییر DNS با VPN محلی |
+| `DnsTester.kt` | تست سرعت DNS (میانگین چند مرحله‌ای) |
+| `DnsProbe.kt` | تست اختصاصی هر DNS روی سایت‌ها/بازی‌ها |
+| `AppBridge.kt` | پل بین رابط وب و اندروید |
+
+## ساخت پروژه
+
+1. پوشه را در Android Studio (Koala یا جدیدتر) باز کنید و Sync کنید.
+2. برای اجرای آزمایشی: دکمه‌ی ▶ (Run).
+3. برای ساخت نسخه‌ی قابل انتشار: **Build → Generate Signed Bundle / APK**، یک کلید امضا (keystore) بسازید و نگه دارید.
+
+## آپدیت لیست DNS بدون آپدیت برنامه
+
+برنامه هنگام باز شدن، لیست DNS و اطلاع از نسخه‌ی جدید را از دو فایل عمومی می‌خواند:
+- `dns-list.json` — افزودن/حذف سرور بدون انتشار نسخه‌ی جدید برنامه
+- `update.json` — اعلام نسخه‌ی جدید یا الزام آپدیت نسخه‌های قدیمی
+
+لینک این دو فایل در `app/src/main/assets/www/dns.js` (بخش `CONFIG`) تنظیم می‌شود.
+
+## حریم خصوصی
+
+متن کامل: [`privacy.md`](privacy.md)
+
+## پشتیبانی
+
+support.yarteam@gmail.com
+
+## لایسنس
+
+این پروژه برای استفاده‌ی تیم YarDigital است.
