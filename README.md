@@ -1,56 +1,30 @@
-<p align="center"><img src="assets/logo.png" alt="Dns Yar" width="600"></p>
+[![Dns Yar logo](logo.png)](logo.png)
 
-<p align="center">
-یک برنامه‌ی اندرویدی رایگان برای تغییر DNS، تست سرعت DNS و بررسی IP — بدون حساب کاربری، بدون تبلیغ، بدون ردیابی.
-<br>
-<em>A free Android app to change DNS, test DNS speed, and check your IP — no account, no ads, no tracking.</em>
-</p>
+# Dns Yar - DNS Changer & Speed Test
 
----
+A free Android app to change your DNS, test DNS speed, and check your IP connection. No sign-up, no ads.
 
-## امکانات
+## Features
 
-- **تغییر DNS** با یک لمس، از طریق یک VPN محلی سبک (فقط ترافیک DNS را می‌گیرد؛ بقیه‌ی اینترنت دست‌نخورده می‌ماند)
-- **لیست آماده‌ی DNS** با پرچم کشور — عمومی، امنیتی، اپراتورها و DNSهای ضدفیلتر
-- **تست سرعت همه‌ی سرورها** (حدود ۳۰ ثانیه، میانگین‌گیری چند مرحله‌ای) و معرفی سریع‌ترین DNS
-- **تست اختصاصی هر DNS** روی بازی‌ها، شبکه‌های اجتماعی، مرورگرها، سایت‌های هوش مصنوعی، مارکت‌ها و سایت دلخواه خودتان
-- **افزودن DNS دلخواه** یا ورود فایل `.ini`
-- **بررسی IP، ISP، موقعیت و رکوردهای DNS** هر دامنه (تب IP)
-- **۱۲ زبان:** فارسی، انگلیسی، عربی، فرانسوی، روسی، آلمانی، چینی، هندی، اسپانیایی، پرتغالی، ترکی، ایتالیایی
+- **DNS list:** ready-made public, security, ISP and anti-filter DNS servers, with country flags.
+- **DNS speed test:** tests every server and highlights the fastest one.
+- **One-tap DNS connect:** change your DNS without any complicated setup.
+- **Test DNS:** check how a DNS performs for games, social apps, browsers, AI sites, app stores, or any site you add.
+- **Custom DNS:** add your own server, or import a list from an `.ini` file.
+- **IP lookup and domain lookup:** your IP, ISP and location, or any domain's IP, ISP and DNS records.
+- **12 languages:** English, Persian, Arabic, French, Russian, German, Chinese, Hindi, Spanish, Portuguese, Turkish and Italian.
 
-## ساختار پروژه
+## Availability
 
-| مسیر | توضیح |
-|---|---|
-| `app/src/main/assets/www/` | رابط کاربری. `popup.css` و `popup.js` همان فایل‌های افزونه‌ی IP Yar هستند (بدون تغییر)؛ فایل‌های جدید: `index.html`، `dns.css`، `dns.js`، `dns-data.js` (لیست DNS)، `i18n-dns.js` (ترجمه‌ها)، `shim.js` |
-| `app/src/main/assets/www/flags/` | پرچم کشورها |
-| `DnsVpnService.kt` | تغییر DNS با VPN محلی |
-| `DnsTester.kt` | تست سرعت DNS (میانگین چند مرحله‌ای) |
-| `DnsProbe.kt` | تست اختصاصی هر DNS روی سایت‌ها/بازی‌ها |
-| `AppBridge.kt` | پل بین رابط وب و اندروید |
+- **Cafe Bazaar:** coming soon
+- **Myket:** coming soon
 
-## ساخت پروژه
+## Privacy
 
-1. پوشه را در Android Studio (Koala یا جدیدتر) باز کنید و Sync کنید.
-2. برای اجرای آزمایشی: دکمه‌ی ▶ (Run).
-3. برای ساخت نسخه‌ی قابل انتشار: **Build → Generate Signed Bundle / APK**، یک کلید امضا (keystore) بسازید و نگه دارید.
+Dns Yar has no accounts, no ads and no tracking. Read the full [Privacy Policy](PRIVACY.md).
 
-## آپدیت لیست DNS بدون آپدیت برنامه
+## Support
 
-برنامه هنگام باز شدن، لیست DNS و اطلاع از نسخه‌ی جدید را از دو فایل عمومی می‌خواند:
-- `dns-list.json` — افزودن/حذف سرور بدون انتشار نسخه‌ی جدید برنامه
-- `update.json` — اعلام نسخه‌ی جدید یا الزام آپدیت نسخه‌های قدیمی
+Email: support.yarteam@gmail.com
 
-لینک این دو فایل در `app/src/main/assets/www/dns.js` (بخش `CONFIG`) تنظیم می‌شود.
-
-## حریم خصوصی
-
-متن کامل: [`privacy.md`](privacy.md)
-
-## پشتیبانی
-
-support.yarteam@gmail.com
-
-## لایسنس
-
-این پروژه برای استفاده‌ی تیم YarDigital است.
+Copyright © 2026 YarDigital. All rights reserved.
